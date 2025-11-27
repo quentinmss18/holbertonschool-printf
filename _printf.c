@@ -2,10 +2,10 @@
 #include "main.h"
 
 /**
- * _printf - produit une sortie selon un format
- * @format: chaîne de format contenant des caractères et des spécificateurs de format
+ * _printf - produces output according to a format
+ * @format: format string containing characters and format specifiers
  *
- * Return: nombre de caractères affichés, ou -1 si le format est NULL
+ * Return: number of characters printed, or -1 if format is NULL
  */
 int _printf(const char *format, ...)
 {
@@ -25,17 +25,25 @@ int _printf(const char *format, ...)
         if (format[i] == '%')
         {
             i++;
+
             if (format[i] == '\0')
             {
                 va_end(args);
                 return -1;
             }
+
             if (format[i] == 'c')
                 count += print_char(args);
+
             else if (format[i] == 's')
                 count += print_string(args);
+
+            else if (format[i] == 'd' || format[i] == 'i')
+                count += print_int(va_arg(args, int));
+
             else if (format[i] == '%')
                 count += _putchar('%');
+
             else
             {
                 count += _putchar('%');
