@@ -2,10 +2,10 @@
 #include "main.h"
 
 /**
- * _printf - produces output according to a format
- * @format: format string containing characters and format specifiers
+ * _printf - produit une sortie selon un format
+ * @format: chaîne de format contenant des caractères et des spécificateurs de format
  *
- * Return: number of characters printed, or -1 if format is NULL
+ * Return: nombre de caractères imprimés, ou -1 si le format est NULL
  */
 int _printf(const char *format, ...)
 {
