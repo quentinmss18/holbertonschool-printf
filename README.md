@@ -1,7 +1,3 @@
-Voici une **version réécrite du README** en gardant **les mêmes informations et la même structure**, mais avec une formulation plus propre et professionnelle pour un projet **printf recréé pour Holberton School.
-
----
-
 # HOLBERTON SCHOOL — `_printf`
 
 Reimplementation partielle de la fonction standard
