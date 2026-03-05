@@ -1,0 +1,102 @@
+Salut ! Ah, le fameux projet `_printf`... C'est un peu le rite de passage chez Holberton. C'est là qu'on comprend enfin ce qui se cache sous le capot de la bibliothèque standard et qu'on commence à jongler sérieusement avec les pointeurs et les listes variadiques (`va_list`).
+
+Voici une version du **README** "Student-style" : plus propre, structurée et prête à être poussée sur ton repo GitHub.
+
+---
+
+# 0x11. C - printf 🚀
+
+## Description
+
+Ce projet est une réimplémentation simplifiée de la fonction `printf` de la bibliothèque standard C (`libc`). Notre fonction `_printf` produit une sortie formatée selon un "format string" et écrit le résultat sur la sortie standard (`stdout`).
+
+Ce projet a été réalisé dans le cadre du cursus **Holberton School** pour approfondir nos connaissances sur :
+
+* Les fonctions variadiques (`stdarg.h`).
+* La gestion des structures et des tableaux de pointeurs sur fonctions.
+* La manipulation des buffers et des caractères.
+
+---
+
+## Utilisation
+
+### Prototype
+
+`int _printf(const char *format, ...);`
+
+### Compilation
+
+Tous les fichiers sont compilés en utilisant les flags suivants sur Ubuntu 20.04 LTS :
+
+```bash
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c
+
+```
+
+### Exemples
+
+```c
+_printf("Character: %c\n", 'H');
+_printf("String: %s\n", "Hello World");
+_printf("Number: %d\n", -1234);
+_printf("Literal percent: %%\n");
+
+```
+
+---
+
+## Formats supportés
+
+| Specifier | Sortie |
+| --- | --- |
+| **%c** | Un caractère unique. |
+| **%s** | Une chaîne de caractères. |
+| **%d** | Un entier signé en base 10. |
+| **%i** | Un entier signé (identique à %d). |
+| **%u** | Un entier non signé (unsigned). |
+| **%%** | Affiche un signe de pourcentage littéral. |
+
+---
+
+## Structure du Projet
+
+### 📂 Fichiers principaux
+
+* `_printf.c` : Le cœur du projet. Contient la boucle principale qui parcourt la chaîne de format.
+* `main.h` : Le header contenant toutes les structures, les prototypes et les macros nécessaires.
+* `get_flag.c` (ou logique interne) : Gère le tableau de structures pour associer un flag (ex: `s`) à sa fonction de rappel (ex: `_print_s_string`).
+
+### 📂 Gestion des nombres (`numbers_digits.c`)
+
+* `print_nbr` : Affiche les entiers signés via une méthode récursive.
+* `print_unsigned_nbr` : Gère les entiers non signés.
+
+### 📂 Gestion des chaînes et caractères (`strings_chars.c` & `handlers`)
+
+* `_putchar` : Écrit un seul caractère sur `stdout`.
+* `_print_single_char` : Handler spécifique pour le flag `%c`.
+* `_print_s_string` : Handler spécifique pour le flag `%s`.
+* `_print_percent` : Affiche `%` en ignorant les arguments passés.
+
+---
+
+## Logique de fonctionnement
+
+1. **Parsing** : La fonction parcourt la chaîne `format`.
+2. **Détection** : Dès qu'un `%` est rencontré, elle cherche le caractère suivant.
+3. **Dispatch** : Elle compare ce caractère avec une liste de "specifiers" stockés dans une structure.
+4. **Exécution** : Si une correspondance est trouvée, la fonction associée est appelée via un pointeur sur fonction.
+5. **Retour** : `_printf` retourne le nombre total de caractères imprimés.
+
+---
+
+## Auteurs
+
+* **Ton Prénom / Pseudo** - [Ton GitHub](https://www.google.com/search?q=https://github.com/ton-profil)
+* **Ton Binôme** - [Son GitHub](https://www.google.com/search?q=https://github.com/son-profil)
+
+---
+
+> **Note :** Ce projet a été réalisé en respectant la norme **Betty**.
+
+Est-ce que cette structure te convient, ou veux-tu que j'ajoute une section spécifique sur la gestion des erreurs (comme les `%` seuls ou les `NULL`) ?
