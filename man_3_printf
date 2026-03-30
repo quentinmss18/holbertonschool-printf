@@ -1,4 +1,4 @@
-.TH _PRINTF 3 "November 2025" "Holberton Project" "Student Manual"
+.TH _PRINTF 3 "March 2026" "Holberton Project" "Student Manual"
 .SH NAME
 _printf \- custom version of the C printf function
 .SH SYNOPSIS
