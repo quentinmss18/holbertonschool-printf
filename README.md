@@ -1,24 +1,15 @@
-# HOLBERTON SCHOOL — `_printf`
+# HOLBERTON SCHOOL — _printf
 
-Reimplementation partielle de la fonction standard
-printf en langage C.
-
-Ce projet reproduit certains comportements de `printf` en gérant plusieurs **spécificateurs de format** et en affichant les données correspondantes.
+Recréation partielle de la fonction standard `printf` en C, avec gestion de plusieurs formats.
 
 ---
 
-# Compilation
-
-Utilisez la commande suivante pour compiler le projet :
+## Compilation
 
 ```bash
 gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format *.c
 ./printf
 ```
-
----
-
-# Exemple d'utilisation
 
 ```c
 _printf("Character: %c\n", 'H');
@@ -27,9 +18,6 @@ _printf("Number: %d\n", -1234);
 _printf("Literal percent: %%\n");
 _printf("Unsigned: %u\n", 3000000000);
 ```
-
-### Output attendu
-
 ```text
 Character: H
 String: Hello World
@@ -38,94 +26,41 @@ Literal percent: %
 Unsigned: 3000000000
 ```
 
----
+```text
+%c    display a single character  
+%s    display a string  
+%d    display a signed integer  
+%i    same as %d  
+%u    display an unsigned integer  
+%%    display a literal percent sign  
+```
 
-# Spécificateurs de format supportés
+📁 Project files management
+_printf.c
 
-| Format | Description                      |
-| ------ | -------------------------------- |
-| `%c`   | Affiche un caractère             |
-| `%s`   | Affiche une chaîne de caractères |
-| `%d`   | Affiche un entier signé          |
-| `%i`   | Identique à `%d`                 |
-| `%u`   | Affiche un entier non signé      |
-| `%%`   | Affiche un symbole `%`           |
+* main function _printf
+* runs through the format string
+* selects the right handler via get_flag (struct array associating format characters to functions)
 
----
+📁 numbers_digits.c
+* print_nbr: print signed integers using recursion
+* print_unsigned_nbr: print unsigned integers using recursion
 
-# Organisation des fichiers
+📁 strings_chars.c
+* _putchar: print a single character
+* _puts: print a full string
 
-## `_printf.c`
+📁 strings_chars_handlers.c
+* _print_single_char: handler for %c
+* _print_s_string: handler for %s
 
-Contient la fonction principale `_printf`.
+📁 _print_percent
+* handler for %% (argument ignored)
 
-Responsabilités :
+📁 main.h
+* All prototypes
+* #include directives
+* Struct definition for format handlers
 
-* Parcourir la chaîne de format
-* Détecter les spécificateurs `%`
-* Appeler la fonction appropriée grâce à `get_flag`
-* Utiliser un tableau de **structures** associant chaque format à son handler
 
----
-
-## `numbers_digits.c`
-
-Gestion de l'affichage des nombres.
-
-Fonctions :
-
-* `print_nbr`
-  Affiche un entier signé en utilisant la **récursion**
-
-* `print_unsigned_nbr`
-  Affiche un entier non signé également avec **récursion**
-
----
-
-## `strings_chars.c`
-
-Fonctions de base pour l'affichage de caractères et chaînes.
-
-Fonctions :
-
-* `_putchar`
-  Affiche un seul caractère
-
-* `_puts`
-  Affiche une chaîne de caractères complète
-
----
-
-## `strings_chars_handlers.c`
-
-Handlers utilisés par `_printf` pour certains formats.
-
-Fonctions :
-
-* `_print_single_char`
-  Gestion du format `%c`
-
-* `_print_s_string`
-  Gestion du format `%s`
-
----
-
-## `_print_percent`
-
-Fonction handler utilisée pour le format `%%`.
-
-* Ignore l'argument
-* Affiche simplement le caractère `%`
-
----
-
-## `main.h`
-
-Fichier d'en-tête principal contenant :
-
-* Tous les **prototypes de fonctions**
-* Les **directives `#include`**
-* La **définition de la structure** utilisée pour associer les formats aux fonctions handlers
-<img width="1440" height="2498" alt="image" src="https://github.com/user-attachments/assets/d656bc44-c5da-4373-af71-526fbb98d5e0" />
-
-Project by Quentin Moussous and Rhiles Fekkai
+![Flowchart](./flowchart.png)
