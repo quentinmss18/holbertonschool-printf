@@ -1,63 +1,80 @@
-#include <stdarg.h>
 #include "main.h"
 
 /**
- * _printf - produit une sortie selon un format
- * @format: chaîne de format contenant des caractères et des spécificateurs de format
- *
- * Return: nombres de caractères imprimés, ou -1 si le format est NULL
+ * get_flag - compare the char after % with s from struct
+ * @s: string after % to compare
+ * Return: pointer to function that match the string
+ */
+int (*get_flag(const char *s))(va_list)
+{
+	f_ptf flag[] = {
+		{"c", print_single_char},
+		{"s", print_s_string},
+		{"%", print_percent},
+		{"d", print_di_nbr},
+		{"i", print_di_nbr},
+		{"u", print_u_nbr},
+		{"R", print_R_rot13},
+		{"S", print_S_unprintable},
+		{"b", print_b_nbr},
+		{"o", print_o_nbr},
+		{"x", print_x_nbr},
+		{"X", print_X_nbr},
+		{NULL, NULL}
+	};
+	int i = 0;
+
+	while (flag[i].s != NULL)
+	{
+		if (flag[i].s[0] == *s)
+			return (flag[i].f);
+		i++;
+	}
+	return (NULL);
+}
+
+/**
+ * _printf - Main loop exploring the argument to _printf
+ * @format: the string given to _printf
+ * Return: count of the printed chars
  */
 int _printf(const char *format, ...)
 {
-    va_list args;
-    int i;
-    int count;
+	va_list ap;
+	int sum = 0, i = 0;
+	int (*f)(va_list);
 
-    if (format == NULL)
-        return -1;
+	if ((!format) || (format[i] == '%' && format[i + 1] == '\0'))
+		return (-1);
 
-    va_start(args, format);
-    count = 0;
-    i = 0;
+	va_start(ap, format);
 
-    while (format[i] != '\0')
-    {
-        if (format[i] == '%')
-        {
-            i++;
-
-            if (format[i] == '\0')
-            {
-                va_end(args);
-                return -1;
-            }
-
-            if (format[i] == 'c')
-                count += print_char(args);
-
-            else if (format[i] == 's')
-                count += print_string(args);
-
-            else if (format[i] == 'd' || format[i] == 'i')
-                count += print_int(va_arg(args, int));
-
-            else if (format[i] == '%')
-                count += _putchar('%');
-
-            else
-            {
-                count += _putchar('%');
-                count += _putchar(format[i]);
-            }
-        }
-        else
-        {
-            _putchar(format[i]);
-            count++;
-        }
-        i++;
-    }
-
-    va_end(args);
-    return count;
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			f = NULL;
+			if (format[i + 1] != '\0')
+				f = get_flag(&format[i + 1]);
+			if (f == NULL)
+			{
+				_putchar(format[i]);
+				sum++;
+				i++;
+			}
+			else
+			{
+				sum += f(ap);
+				i += 2;
+			}
+		}
+		else
+		{
+			_putchar(format[i]);
+			sum++;
+			i++;
+		}
+	}
+	va_end(ap);
+	return (sum);
 }
