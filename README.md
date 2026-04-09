@@ -63,4 +63,5 @@ _printf.c
 * Struct definition for format handlers
 
 
-<img width="531" height="611" alt="image" src="https://github.com/user-attachments/assets/a4aaf879-497b-4890-a1d6-b8cd74d4e722" />
+<img width="1440" height="1864" alt="image" src="https://github.com/user-attachments/assets/0b2a7f12-757b-45e1-8f36-1486616f94de" />
+
