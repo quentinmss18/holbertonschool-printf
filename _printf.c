@@ -5,7 +5,7 @@
  * _printf - produit une sortie selon un format
  * @format: chaîne de format contenant des caractères et des spécificateurs de format
  *
- * Return: nombre de caractères imprimés, ou -1 si le format est NULL
+ * Return: nombres de caractères imprimés, ou -1 si le format est NULL
  */
 int _printf(const char *format, ...)
 {
