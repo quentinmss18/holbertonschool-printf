@@ -126,4 +126,5 @@ Fichier d'en-tête principal contenant :
 * Tous les **prototypes de fonctions**
 * Les **directives `#include`**
 * La **définition de la structure** utilisée pour associer les formats aux fonctions handlers
-<img width="642" height="732" alt="image" src="https://github.com/user-attachments/assets/eea8d43f-1b5e-4b73-aedb-d166927e7f4e" />
+<img width="1440" height="2498" alt="image" src="https://github.com/user-attachments/assets/d656bc44-c5da-4373-af71-526fbb98d5e0" />
+
