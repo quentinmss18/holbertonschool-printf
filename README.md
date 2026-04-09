@@ -63,4 +63,4 @@ _printf.c
 * Struct definition for format handlers
 
 
-![Flowchart](./flowchart.png)
+<img width="531" height="611" alt="image" src="https://github.com/user-attachments/assets/a4aaf879-497b-4890-a1d6-b8cd74d4e722" />
