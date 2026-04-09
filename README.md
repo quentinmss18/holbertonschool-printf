@@ -128,3 +128,4 @@ Fichier d'en-tête principal contenant :
 * La **définition de la structure** utilisée pour associer les formats aux fonctions handlers
 <img width="1440" height="2498" alt="image" src="https://github.com/user-attachments/assets/d656bc44-c5da-4373-af71-526fbb98d5e0" />
 
+Project by Quentin Moussous and Rhiles Fekkai
